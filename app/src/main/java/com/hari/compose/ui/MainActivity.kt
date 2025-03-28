@@ -1,4 +1,4 @@
-package com.hari.compose
+package com.hari.compose.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ButtonElevation
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -59,9 +55,9 @@ fun BuildBox(modifier: Modifier) {
         mutableIntStateOf(0)
     }
 
-    val actionClicked = remember {
+    /*val actionClicked = remember {
         mutableStateOf(false)
-    }
+    }*/
 
     val random = Random(256)
     val snackBarHostState = remember { SnackbarHostState() }
