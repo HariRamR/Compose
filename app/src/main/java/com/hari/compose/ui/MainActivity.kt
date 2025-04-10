@@ -15,6 +15,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -43,9 +44,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
@@ -54,6 +60,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.hari.compose.R
 import com.hari.compose.ui.theme.ComposeTheme
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
@@ -111,6 +118,29 @@ fun BuildBox(
         mutableIntStateOf(0)
     }
 
+    val uiComponentsName = buildAnnotatedString {
+        append("UI ")
+        pushStyle(
+            SpanStyle(
+                color = colorResource(R.color.teal_200),
+                fontSize = 20.sp,
+            )
+        )
+        append("Components ")
+        pop()
+        pushStyle(
+            SpanStyle(
+                color = colorResource(R.color.purple_200),
+                fontSize = 16.sp,
+                shadow = Shadow(
+                    color = colorResource(R.color.black),
+                    blurRadius = 20f
+                )
+            )
+        )
+        append("Screen")
+    }
+
     /*val actionClicked = remember {
         mutableStateOf(false)
     }*/
@@ -140,7 +170,9 @@ fun BuildBox(
             modifier = Modifier.fillMaxSize().background(color = color.value),
             contentAlignment = Alignment.Center
         ) {
-            Column {
+            Column(
+              horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Button(
                     modifier = Modifier
                         .border(2.dp, Color.White, RoundedCornerShape(10.dp))
@@ -181,6 +213,9 @@ fun BuildBox(
                 ) {
                     Text("Android")
                 }
+                Spacer(
+                    modifier = Modifier.height(10.dp)
+                )
                 Button(
                     modifier = Modifier
                         .border(2.dp, Color.White, RoundedCornerShape(10.dp))
@@ -190,7 +225,7 @@ fun BuildBox(
                     elevation = ButtonDefaults.elevatedButtonElevation(defaultElevation = 10.dp),
                 ) {
                     Text(
-                        "UI Components"
+                        uiComponentsName
                     )
                 }
             }
