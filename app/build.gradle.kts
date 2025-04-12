@@ -53,6 +53,10 @@ dependencies {
     implementation(libs.androidx.constraint.layout)
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation (libs.androidx.xwork.runtime.ktx)
+    implementation (libs.xcoil.compose)
+    implementation (libs.androidx.xruntime.livedata)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

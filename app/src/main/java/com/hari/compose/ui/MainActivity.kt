@@ -314,3 +314,6 @@ fun UiComponentsScreen(accessories: List<String>) {
         }
     }
 }
+
+@Serializable
+object SharedImageRoute
